@@ -1,0 +1,35 @@
+#include <iostream>
+ 
+unsigned CesNum(unsigned int n)
+{
+	bool bit[32]={0};
+	for (int i = 31; i >= 0; i--)
+	{
+		unsigned int mask = (1 << i);
+		if (n & mask)
+			bit[i]=1;
+		else
+			bit[i]=0;
+		std::cout<<bit[i];
+	}
+	std::cout<<"\n";
+	for (int i=0;i<=31;i++)
+	{
+		int ChangeNum;
+		ChangeNum=bit[i];
+		bit[i]=bit[i+1];
+		bit[i+1]=ChangeNum;
+		i++;
+	}
+	for (int i = 31; i >= 0; i--)
+	{
+		std::cout<<bit[i];
+	}
+}
+int main()
+{
+   unsigned n;
+   std::cin>>n;
+   CesNum(n);
+   return 0;
+}
